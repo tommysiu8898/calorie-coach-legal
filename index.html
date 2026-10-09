@@ -168,15 +168,76 @@
     .ticks li::before { content: "✓"; flex: none; width: 24px; height: 24px; border-radius: 8px; background: var(--mint); color: var(--ink); display: grid; place-items: center; font-weight: 700; font-size: .85rem; }
     @media (max-width: 900px) { .scan { grid-template-columns: 1fr; } }
 
-    /* ── features ── */
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; transition: transform .2s ease, box-shadow .2s ease; }
-    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-    .ic { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; font-size: 1.35rem; margin-bottom: 16px; }
-    .card h3 { font-size: 1.15rem; margin-bottom: 8px; }
-    .card p { margin: 0; color: var(--muted); font-size: .97rem; }
-    @media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+    /* ── features (bento) ── */
+    .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+    .tile {
+      background: var(--card); border: 1px solid var(--line); border-radius: 26px; padding: 26px;
+      display: flex; flex-direction: column; gap: 18px; overflow: hidden; position: relative;
+    }
+    .tile.w3 { grid-column: span 3; } .tile.w2 { grid-column: span 2; } .tile.w4 { grid-column: span 4; }
+    .tile.green { background: var(--ink); color: #fff; border-color: transparent; }
+    @media (prefers-color-scheme: dark) { .tile.green { background: #123D25; } }
+    .tile.sun { background: var(--sun-2); border-color: transparent; }
+    .tile .k { font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .7; }
+    .tile h3 { font-size: 1.32rem; line-height: 1.2; }
+    .tile p { margin: 0; color: var(--muted); font-size: .98rem; }
+    .tile.green p { color: rgba(255,255,255,.78); }
+    .tile .demo { margin-top: auto; }
+    /* chat */
+    .msg { max-width: 88%; padding: 11px 14px; border-radius: 16px; font-size: .92rem; line-height: 1.45; }
+    .msg.me { margin-left: auto; background: rgba(255,255,255,.16); border-bottom-right-radius: 5px; }
+    .msg.cal { background: #fff; color: #10231A; border-bottom-left-radius: 5px; margin-top: 8px; }
+    .msg.cal b { color: #146C3C; }
+    .who { display: flex; align-items: center; gap: 8px; font-size: .78rem; opacity: .8; margin-top: 12px; }
+    .who img { width: 22px; height: 22px; border-radius: 50%; background: #EAF6EE; }
+    /* target */
+    .big { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; font-size: 3.1rem; line-height: 1; letter-spacing: -.03em; }
+    .big small { font-size: 1rem; font-weight: 600; color: var(--muted); letter-spacing: 0; }
+    .bars3 { display: grid; gap: 9px; }
+    .bar { display: grid; grid-template-columns: 62px 1fr 52px; align-items: center; gap: 10px; font-size: .82rem; color: var(--muted); }
+    .bar i { display: block; height: 7px; border-radius: 9px; background: var(--line); position: relative; overflow: hidden; }
+    .bar i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--v); background: var(--c); border-radius: 9px; }
+    .bar span:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+    /* week chart */
+    .week { display: flex; align-items: flex-end; gap: 10px; height: 120px; position: relative; }
+    .day { flex: 1; display: flex; align-items: flex-end; gap: 3px; height: 100%; position: relative; }
+    .day i { flex: 1; border-radius: 6px 6px 3px 3px; }
+    .day .e { background: #F07A1A; } .day .b { background: #22A35A; }
+    .day::after { content: attr(data-d); position: absolute; bottom: -20px; left: 0; right: 0; text-align: center; font-size: .72rem; color: var(--muted); }
+    .goal { position: absolute; left: 0; right: 0; top: 26%; border-top: 1.5px dashed var(--muted); opacity: .45; }
+    .legend { display: flex; gap: 14px; font-size: .78rem; color: var(--muted); margin-top: 28px; }
+    .legend span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 6px; background: var(--c); }
+    /* health */
+    .steps-n { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; font-size: 2.4rem; letter-spacing: -.02em; }
+    .ring { height: 8px; border-radius: 9px; background: var(--line); overflow: hidden; }
+    .ring i { display: block; height: 100%; width: 100%; background: linear-gradient(90deg, #22A35A, #7AD39C); }
+    .burn { display: flex; justify-content: space-between; font-size: .86rem; color: var(--muted); margin-top: 8px; }
+    /* nearby */
+    .places { display: grid; gap: 10px; }
+    .place { display: grid; grid-template-columns: 54px 1fr auto; gap: 14px; align-items: center; padding: 10px; border-radius: 16px; background: var(--bg); border: 1px solid var(--line); }
+    .place .ph { width: 54px; height: 54px; border-radius: 12px; background-size: cover; background-position: center; }
+    .place b { display: block; font-size: .95rem; }
+    .place span { font-size: .82rem; color: var(--muted); }
+    .place em { font-style: normal; font-size: .8rem; font-weight: 700; color: var(--ink); background: var(--mint); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+    /* community */
+    .post { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; font-size: .9rem; }
+    .post .hd { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-size: .82rem; color: var(--muted); }
+    .post .av { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: .68rem; font-weight: 700; }
+    .post .more { margin-left: auto; letter-spacing: 1px; }
+    .menu { display: flex; gap: 8px; margin-top: 10px; }
+    .menu span { font-size: .78rem; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); }
+    .menu span.red { color: #C2353B; }
+    @media (max-width: 900px) {
+      .bento { grid-template-columns: 1fr 1fr; }
+      .tile.w3, .tile.w2, .tile.w4 { grid-column: span 2; }
+      .tile.half { grid-column: span 1; }
+    }
+    @media (max-width: 560px) {
+      .tile.half { grid-column: span 2; }
+      .tile { padding: 22px; }
+      .place { grid-template-columns: 54px 1fr; }
+      .place em { grid-column: 2; justify-self: start; white-space: normal; }
+    }
 
     /* ── showcase ── */
     .show { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
@@ -319,17 +380,75 @@
     <section id="features" style="background: linear-gradient(180deg, transparent, var(--mint) 30%, transparent);">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="eyebrow">Everything in one app</span>
-          <h2>Your nutrition, finally making sense</h2>
-          <p>From the first photo to the weekly review, every number is tied to your goal.</p>
+          <span class="eyebrow">What you get</span>
+          <h2>More than a calorie counter</h2>
+          <p>Logging is the easy part. CalSpark helps with the harder one: what to eat next.</p>
         </div>
-        <div class="grid">
-          <article class="card reveal"><div class="ic" style="background:#EAF6EE">🧑‍🏫</div><h3>An AI coach that has seen your data</h3><p>Ask anything: "Is this enough protein?" Your coach sees your logs, targets and trend, so the answer is about you, with healthy, real-meal suggestions.</p></article>
-          <article class="card reveal"><div class="ic" style="background:#FFF1D6">🎯</div><h3>Targets that fit you</h3><p>Daily calories and macros from your height, weight, age, activity and goal date, using the Mifflin–St Jeor equation.</p></article>
-          <article class="card reveal"><div class="ic" style="background:#DCEBFF">📈</div><h3>See the whole picture</h3><p>Eaten vs burned, food mix, weight and BMI trends, streaks and badges — week by week.</p></article>
-          <article class="card reveal"><div class="ic" style="background:#FDE2E4">❤️</div><h3>Apple Health built in</h3><p>Steps, workouts and energy burned flow in automatically, so your budget reflects how much you actually moved.</p></article>
-          <article class="card reveal"><div class="ic" style="background:#EDE6FF">📍</div><h3>Eat well nearby</h3><p>Find restaurants, gyms and parks around you, with the coach's pick of what to order to stay on track.</p></article>
-          <article class="card reveal"><div class="ic" style="background:#E3F4F2">👥</div><h3>A friendly community</h3><p>Join groups, share wins and climb the streak leaderboard. Messages are filtered, and anyone can be reported or blocked.</p></article>
+        <div class="bento">
+          <article class="tile green w4 reveal">
+            <span class="k">AI coach</span>
+            <h3>Ask it like you'd ask a friend who's a dietitian.</h3>
+            <p>It sees what you ate today, what's left and how your week is going, so the answer is about you, not the internet.</p>
+            <div class="demo">
+              <div class="msg me">I'm at 82g protein and it's 7pm. What should dinner be?</div>
+              <div class="msg cal">You've got <b>~520 kcal</b> left. Steamed fish with choy sum and half a bowl of rice gets you past <b>120g protein</b> and still under budget.</div>
+              <div class="who"><img src="./assets/icon-256.png" alt="" width="22" height="22" />Cal, your coach</div>
+            </div>
+          </article>
+          <article class="tile w2 half reveal">
+            <span class="k">Your target</span>
+            <div class="big">1,350 <small>kcal / day</small></div>
+            <div class="bars3">
+              <div class="bar"><span>Protein</span><i style="--v:62%;--c:#E5484D"></i><span>95 g</span></div>
+              <div class="bar"><span>Carbs</span><i style="--v:78%;--c:#F0A21A"></i><span>150 g</span></div>
+              <div class="bar"><span>Fat</span><i style="--v:45%;--c:#3B7DDD"></i><span>45 g</span></div>
+            </div>
+            <p>Worked out from your body, activity and goal date. Shows its maths.</p>
+          </article>
+          <article class="tile w3 reveal">
+            <span class="k">This week</span>
+            <h3>Eaten vs burned, day by day.</h3>
+            <div class="demo">
+              <div class="week">
+                <div class="goal"></div>
+                <div class="day" data-d="M"><i class="e" style="height:78%"></i><i class="b" style="height:22%"></i></div>
+                <div class="day" data-d="T"><i class="e" style="height:74%"></i><i class="b" style="height:30%"></i></div>
+                <div class="day" data-d="W"><i class="e" style="height:86%"></i><i class="b" style="height:18%"></i></div>
+                <div class="day" data-d="T"><i class="e" style="height:70%"></i><i class="b" style="height:35%"></i></div>
+                <div class="day" data-d="F"><i class="e" style="height:64%"></i><i class="b" style="height:26%"></i></div>
+                <div class="day" data-d="S"><i class="e" style="height:90%"></i><i class="b" style="height:44%"></i></div>
+                <div class="day" data-d="S"><i class="e" style="height:58%"></i><i class="b" style="height:15%"></i></div>
+              </div>
+              <div class="legend"><span style="--c:#F07A1A">Eaten</span><span style="--c:#22A35A">Burned</span><span style="--c:transparent">- - Goal</span></div>
+            </div>
+          </article>
+          <article class="tile sun w3 reveal">
+            <span class="k">Apple Health</span>
+            <h3>Walk more, eat more. It's in the budget.</h3>
+            <p>Steps, workouts and active energy come in from Apple Health on their own. No manual entry.</p>
+            <div class="demo">
+              <div class="steps-n">10,536 <small style="font-size:1rem;font-weight:600;color:var(--muted)">steps</small></div>
+              <div class="ring"><i></i></div>
+              <div class="burn"><span>Goal 8,000</span><span><b style="color:var(--ink)">+418 kcal</b> added to today</span></div>
+            </div>
+          </article>
+          <article class="tile w3 reveal">
+            <span class="k">Eat well nearby</span>
+            <h3>Hungry and out? It knows the street.</h3>
+            <div class="places demo">
+              <div class="place"><div class="ph" style="background-image:url(./assets/food-chicken-rice.jpg)"></div><div><b>Golden Diner</b><span>200 m · Cantonese</span></div><em>Poached chicken rice</em></div>
+              <div class="place"><div class="ph" style="background-image:url(./assets/food-wonton.jpg)"></div><div><b>Lucky Noodle House</b><span>450 m · Noodles</span></div><em>Wonton noodles in soup</em></div>
+            </div>
+          </article>
+          <article class="tile w3 reveal">
+            <span class="k">Community</span>
+            <h3>Streaks are easier with company.</h3>
+            <p>Join a group, cheer each other on and climb the streak leaderboard. Anyone can be reported or blocked.</p>
+            <div class="demo">
+              <div class="post"><div class="hd"><span class="av" style="background:#6366F1">AM</span>Alex M. · Fitness &amp; Workouts<span class="more">···</span></div>Just finished a 5K run! New personal best.</div>
+              <div class="menu"><span>Report</span><span class="red">Block</span></div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
