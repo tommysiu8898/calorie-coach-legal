@@ -1,0 +1,98 @@
+{
+ "en": {
+  "alex": "Friendly · motivating",
+  "mei": "Gentle · encouraging",
+  "jordan": "Young · energetic",
+  "maya": "Warm · upbeat",
+  "sam": "Calm · professional",
+  "sofia": "Cheerful · supportive",
+  "leo": "Easygoing · positive",
+  "amara": "Confident · energetic",
+  "marco": "Cheerful · energetic",
+  "hannah": "Kind · motivating"
+ },
+ "zh-hant": {
+  "alex": "友善 · 激勵",
+  "mei": "溫柔 · 鼓勵",
+  "jordan": "年輕 · 活力",
+  "maya": "親切 · 樂觀",
+  "sam": "沉穩 · 專業",
+  "sofia": "開朗 · 支持",
+  "leo": "隨和 · 正面",
+  "amara": "自信 · 充滿活力",
+  "marco": "開朗 · 充滿活力",
+  "hannah": "親切 · 激勵"
+ },
+ "zh-hans": {
+  "alex": "友善 · 激励",
+  "mei": "温柔 · 鼓励",
+  "jordan": "年轻 · 活力",
+  "maya": "亲切 · 乐观",
+  "sam": "沉稳 · 专业",
+  "sofia": "开朗 · 支持",
+  "leo": "随和 · 正面",
+  "amara": "自信 · 充满活力",
+  "marco": "开朗 · 充满活力",
+  "hannah": "亲切 · 激励"
+ },
+ "ja": {
+  "alex": "フレンドリー · やる気を引き出す",
+  "mei": "やさしい · 励まし上手",
+  "jordan": "若々しい · エネルギッシュ",
+  "maya": "温かい · 前向き",
+  "sam": "落ち着き · プロフェッショナル",
+  "sofia": "明るい · 寄り添う",
+  "leo": "気さく · ポジティブ",
+  "amara": "自信 · エネルギッシュ",
+  "marco": "明るい · エネルギッシュ",
+  "hannah": "やさしい · やる気を引き出す"
+ },
+ "fr": {
+  "alex": "Sympa · motivant",
+  "mei": "Douce · encourageante",
+  "jordan": "Jeune · énergique",
+  "maya": "Chaleureuse · positive",
+  "sam": "Calme · professionnel",
+  "sofia": "Joyeuse · bienveillante",
+  "leo": "Décontracté · positif",
+  "amara": "Confiante · énergique",
+  "marco": "Joyeux · énergique",
+  "hannah": "Bienveillante · motivante"
+ },
+ "de": {
+  "alex": "Freundlich · motivierend",
+  "mei": "Sanft · ermutigend",
+  "jordan": "Jung · energiegeladen",
+  "maya": "Herzlich · fröhlich",
+  "sam": "Ruhig · professionell",
+  "sofia": "Fröhlich · unterstützend",
+  "leo": "Locker · positiv",
+  "amara": "Selbstbewusst · energisch",
+  "marco": "Fröhlich · energiegeladen",
+  "hannah": "Freundlich · motivierend"
+ },
+ "es": {
+  "alex": "Amable · motivador",
+  "mei": "Amable · alentadora",
+  "jordan": "Joven · enérgico",
+  "maya": "Cálida · optimista",
+  "sam": "Tranquilo · profesional",
+  "sofia": "Alegre · comprensiva",
+  "leo": "Relajado · positivo",
+  "amara": "Segura · enérgica",
+  "marco": "Alegre · enérgico",
+  "hannah": "Amable · motivadora"
+ },
+ "it": {
+  "alex": "Cordiale · motivante",
+  "mei": "Gentile · incoraggiante",
+  "jordan": "Giovane · energico",
+  "maya": "Calorosa · solare",
+  "sam": "Calmo · professionale",
+  "sofia": "Allegra · di supporto",
+  "leo": "Tranquillo · positivo",
+  "amara": "Sicura · energica",
+  "marco": "Allegro · energico",
+  "hannah": "Gentile · motivante"
+ }
+}

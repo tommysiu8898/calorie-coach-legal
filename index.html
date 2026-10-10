@@ -12,8 +12,15 @@
   <meta property="og:description" content="Snap your plate. Know your day. Calories, macros and an AI coach that has seen your data." />
   <meta property="og:image" content="https://calspark.cloud/assets/screen-home.jpg" />
   <meta property="og:url" content="https://calspark.cloud/" />
+  <link rel="canonical" href="https://calspark.cloud/" />
   <link rel="alternate" hreflang="en" href="https://calspark.cloud/" />
   <link rel="alternate" hreflang="zh-Hant" href="https://calspark.cloud/zh-hant/" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://calspark.cloud/zh-hans/" />
+  <link rel="alternate" hreflang="ja" href="https://calspark.cloud/ja/" />
+  <link rel="alternate" hreflang="fr" href="https://calspark.cloud/fr/" />
+  <link rel="alternate" hreflang="de" href="https://calspark.cloud/de/" />
+  <link rel="alternate" hreflang="es" href="https://calspark.cloud/es/" />
+  <link rel="alternate" hreflang="it" href="https://calspark.cloud/it/" />
   <link rel="alternate" hreflang="x-default" href="https://calspark.cloud/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -91,14 +98,29 @@
     nav.links a:hover { color: var(--text); }
     .nav-cta { padding: 10px 16px; font-size: .9rem; }
     .nav-right { display: flex; align-items: center; gap: 12px; }
-    .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; font-size: .82rem; font-weight: 600; }
-    .lang a, .lang span { padding: 5px 10px; border-radius: 999px; text-decoration: none; color: var(--muted); }
-    .lang span { background: var(--mint); color: var(--ink); }
-    .lang a, .lang span, .nav-cta { white-space: nowrap; }
+    .lang { position: relative; font-size: .86rem; font-weight: 600; }
+    .lang summary {
+      list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; color: var(--muted); background: var(--card);
+    }
+    .lang summary::-webkit-details-marker { display: none; }
+    .lang summary svg { width: 14px; height: 14px; }
+    .lang summary::after { content: ""; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); margin-left: 2px; }
+    .lang[open] summary { color: var(--text); }
+    .lang-list {
+      position: absolute; right: 0; top: calc(100% + 8px); min-width: 170px; padding: 6px; z-index: 30;
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+      display: grid;
+    }
+    .lang-list a { padding: 8px 12px; border-radius: 9px; text-decoration: none; color: var(--text); font-weight: 500; }
+    .lang-list a:hover { background: var(--mint); }
+    .lang-list a[aria-current] { color: var(--ink); font-weight: 700; background: var(--mint); }
+    .lang summary, .nav-cta { white-space: nowrap; }
     @media (max-width: 480px) {
       .nav-right { gap: 8px; }
       .nav-cta { padding: 9px 12px; font-size: .82rem; }
-      .lang a, .lang span { padding: 4px 8px; }
+      .lang summary { padding: 8px 10px; }
+      .lang summary .lbl { display: none; }
       .brand { font-size: 1.05rem; }
     }
 
@@ -254,6 +276,20 @@
       .place em { grid-column: 2; justify-self: start; white-space: normal; }
     }
 
+    /* ── coaches ── */
+    .team { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px 18px; max-width: 980px; margin: 0 auto; }
+    .coach { margin: 0; width: 164px; text-align: center; }
+    .coach .face {
+      width: 128px; height: 128px; margin: 0 auto; border-radius: 50%; overflow: hidden;
+      background: radial-gradient(circle at 50% 35%, var(--sun-2), var(--mint) 70%); border: 1px solid var(--line);
+      transition: transform .2s ease;
+    }
+    .coach:hover .face { transform: translateY(-4px) rotate(-2deg); }
+    .coach .face img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .coach b { display: block; margin-top: 10px; font-family: "Plus Jakarta Sans", sans-serif; }
+    .coach span { font-size: .84rem; color: var(--muted); }
+    @media (max-width: 560px) { .coach { width: 30%; } .coach .face { width: 88px; height: 88px; } }
+
     /* ── showcase ── */
     .show { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
     .show figure { margin: 0; text-align: center; }
@@ -292,12 +328,12 @@
 
     /* ── faq ── */
     .faq { max-width: 760px; margin: 0 auto; display: grid; gap: 12px; }
-    details { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 4px 20px; }
-    summary { cursor: pointer; list-style: none; font-weight: 600; padding: 16px 0; display: flex; justify-content: space-between; gap: 16px; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; color: var(--ink); font-size: 1.3rem; line-height: 1; transition: transform .2s; }
-    details[open] summary::after { transform: rotate(45deg); }
-    details p { margin: 0 0 18px; color: var(--muted); }
+    .faq details { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 4px 20px; }
+    .faq summary { cursor: pointer; list-style: none; font-weight: 600; padding: 16px 0; display: flex; justify-content: space-between; gap: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--ink); font-size: 1.3rem; line-height: 1; transition: transform .2s; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { margin: 0 0 18px; color: var(--muted); }
 
     /* ── cta + footer ── */
     .cta {
@@ -330,7 +366,7 @@
         <a href="#faq">FAQ</a>
         <a href="./support.html">Support</a>
       </nav>
-      <div class="nav-right"><div class="lang" aria-label="Language"><span>EN</span><a href="./zh-hant/" hreflang="zh-Hant" lang="zh-Hant">繁中</a></div><a class="btn btn-primary nav-cta" href="#download">Get the app</a></div>
+      <div class="nav-right"><details class="lang"><summary aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg><span class="lbl">EN</span></summary><div class="lang-list"><a href="/" lang="en" hreflang="en" aria-current="page">English</a><a href="/zh-hant/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a><a href="/zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a><a href="/ja/" lang="ja" hreflang="ja">日本語</a><a href="/fr/" lang="fr" hreflang="fr">Français</a><a href="/de/" lang="de" hreflang="de">Deutsch</a><a href="/es/" lang="es" hreflang="es">Español</a><a href="/it/" lang="it" hreflang="it">Italiano</a></div></details><a class="btn btn-primary nav-cta" href="#download">Get the app</a></div>
     </div>
   </header>
 
@@ -407,7 +443,7 @@
             <div class="demo">
               <div class="msg me">I'm at 82g protein and it's 7pm. What should dinner be?</div>
               <div class="msg cal">You've got <b>~520 kcal</b> left. Steamed fish with choy sum and half a bowl of rice gets you past <b>120g protein</b> and still under budget.</div>
-              <div class="who"><img src="./assets/icon-256.png" alt="" width="22" height="22" />Cal, your coach</div>
+              <div class="who"><img src="./assets/coaches/alex.webp" alt="" width="22" height="22" />Alex, one of 10 coaches</div>
             </div>
           </article>
           <article class="tile w2 half reveal">
@@ -464,6 +500,29 @@
               <div class="menu"><span>Report</span><span class="red">Block</span></div>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coaches -->
+    <section id="coaches">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Meet the coaches</span>
+          <h2>Pick the coach that suits you</h2>
+          <p>Ten coaches, each with their own style. Switch any time in your profile.</p>
+        </div>
+        <div class="team reveal">
+          <figure class="coach"><div class="face"><img src="./assets/coaches/alex.webp" alt="Alex" width="160" height="160" loading="lazy" /></div><figcaption><b>Alex</b><span>Friendly · motivating</span></figcaption></figure>
+          <figure class="coach"><div class="face"><img src="./assets/coaches/mei.webp" alt="Mei" width="160" height="160" loading="lazy" /></div><figcaption><b>Mei</b><span>Gentle · encouraging</span></figcaption></figure>
+          <figure class="coach"><div class="face"><img src="./assets/coaches/jordan.webp" alt="Jordan" width="160" height="160" loading="lazy" /></div><figcaption><b>Jordan</b><span>Young · energetic</span></figcaption></figure>
+          <figure class="coach"><div class="face"><img src="./assets/coaches/maya.webp" alt="Maya" width="160" height="160" loading="lazy" /></div><figcaption><b>Maya</b><span>Warm · upbeat</span></figcaption></figure>
+          <figure class="coach"><div class="face"><img src="./assets/coaches/sam.webp" alt="Sam" width="160" height="160" loading="lazy" /></div><figcaption><b>Sam</b><span>Calm · professional</span></figcaption></figure>
+          <figure class="coach"><div class="face"><img src="./assets/coaches/sofia.webp" alt="Sofia" width="160" height="160" loading="lazy" /></div><figcaption><b>Sofia</b><span>Cheerful · supportive</span></figcaption></figure>
+          <figure class="coach"><div class="face"><img src="./assets/coaches/leo.webp" alt="Leo" width="160" height="160" loading="lazy" /></div><figcaption><b>Leo</b><span>Easygoing · positive</span></figcaption></figure>
+          <figure class="coach"><div class="face"><img src="./assets/coaches/amara.webp" alt="Amara" width="160" height="160" loading="lazy" /></div><figcaption><b>Amara</b><span>Confident · energetic</span></figcaption></figure>
+          <figure class="coach"><div class="face"><img src="./assets/coaches/marco.webp" alt="Marco" width="160" height="160" loading="lazy" /></div><figcaption><b>Marco</b><span>Cheerful · energetic</span></figcaption></figure>
+          <figure class="coach"><div class="face"><img src="./assets/coaches/hannah.webp" alt="Hannah" width="160" height="160" loading="lazy" /></div><figcaption><b>Hannah</b><span>Kind · motivating</span></figcaption></figure>
         </div>
       </div>
     </section>
